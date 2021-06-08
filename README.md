@@ -9,7 +9,7 @@ Les fichiersseront dépendants des autres pour effectuer une actions
 Exemple: Le fichier app.js aura besoin d'aller chercher la fnction 
 de création de serveur dans le fichier routes.js
 
-# BUFFER
+## BUFFER
 
 Buffer: zidufasha kumira chunks uko zigenda zinjira. 
 Ni nka bus iguma izenguruka ishaka abagenzi ikabatora kuri bus station
