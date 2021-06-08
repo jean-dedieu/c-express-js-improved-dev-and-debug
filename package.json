@@ -1,0 +1,23 @@
+{
+  "name": "c-improved-dev-and-debug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jean-dedieu/C-Improved-Dev-And-Debug.git"
+  },
+  "author": "Jean de Dieu TWAGIRUMUHOZA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jean-dedieu/C-Improved-Dev-And-Debug/issues"
+  },
+  "homepage": "https://github.com/jean-dedieu/C-Improved-Dev-And-Debug#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

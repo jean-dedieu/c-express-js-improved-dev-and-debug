@@ -17,7 +17,7 @@
 
 
 
-## End: Section 3 => 39 Wrap up 🛫🛫🛫🛫
+## End: Section 4 => 47 Understanding different error types 🛫🛫🛫🛫
 
 
 
