@@ -1,1 +1,10 @@
-end: Section 3 => Understanding the basics, 32, Routing Requests
+//BUFFER
+
+Buffer: zidufasha kumira chunks uko zigenda zinjira. 
+Ni nka bus iguma izenguruka ishaka abagenzi ikabatora kuri bus station
+
+to use it we must listen to request data event with 'on'
+
+
+
+end: Section 3 => 39 Wrap up
