@@ -1,6 +1,6 @@
 # B-Real-Start-Node-Styled-Code
 
-# Code de création de serveur divisés en plusieurs fichiers 
+## Code de création de serveur divisés en plusieurs fichiers 
 
 Pour que chaque fichier puisse faire son travail. 
 
