@@ -3,7 +3,7 @@
     This part of section 4 covers Express.js framework as we were writing manualy our server body in HTML
 
 
- ##  Installing Express.js in our project the way that it will run on whenever our project will be deployed
+ ##  Installing Express.js in our project the way that it will run wherever our project will be deployed
  
      npm install --save express
      
