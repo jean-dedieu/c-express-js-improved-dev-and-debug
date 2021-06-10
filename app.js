@@ -4,15 +4,19 @@
  * 
  * http core module here will be imported
  * */
-const http = require('http');
+//const http = require('http'), express will do it automaticaly
 
-/**
- * importing  routes.js
- * to use the function that we created in there to handle requests
- * in routes.js, it will look the exported module and what is in side the module
- * */
 
-const routes = require('./routes');
+/**EXPRESS JS
+ * After installing express with npm
+ * We will require it here to use it as third-party package
+ */
+
+const express = require('express');
+
+//use our express as app object
+const app = express();
+
 
 //CREATING NODE JS SERVER
  
@@ -24,8 +28,24 @@ const routes = require('./routes');
   * and we do not forget to listen to our server port
   * 
   */
- //the multiple thing exported in routes
- console.log(routes.someText);
- const server = http.createServer(routes.handler);
 
-server.listen(3000);
+/*
+**working with middleware, functions for processing requests in express
+there are executed top bottom
+*/
+app.use((req ,res ,next) =>  {
+    console.log('In the middleware');
+    next(); //allows the request to continue to the next middleware
+});
+
+app.use((req ,res ,next) =>  {
+    console.log('In another the middleware');
+    res.send('<h1>Hello from Express</h1>');//here express will set headers and text-type for us
+});
+
+ /*Code used before shortening the server creation and listening
+ onst server = http.createServer(app);
+
+server.listen(3000);*/
+
+app.listen(3000);
