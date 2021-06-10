@@ -9,4 +9,5 @@ To use it we must listen to request data event with 'on'
 We can use npm init after server to add third-party packages
 
 Nodemon is a third-party package
-end: Section 3 => 39 Wrap up
+
+## End: Section 4 => 47 Understanding different error types 🛫🛫🛫🛫
