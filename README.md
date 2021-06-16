@@ -1,4 +1,4 @@
-# C- ExpressJS-Improved development workflow and debugging
+# C- Express.js Improved development workflow and debugging
 
     This part of section 4 covers Express.js framework as we were writing manualy our server body in HTML
 
