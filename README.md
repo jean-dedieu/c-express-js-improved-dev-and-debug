@@ -2,19 +2,27 @@
 
     This source code covers Express.js framework as we can write manualy our server body in HTML
 
-
- ##  Installing Express.js in our project the way that it will run wherever our project will be deployed
+ ## Clone and run this project 🚀🚀
+ 
+    git clone + remote source
+    
+    npm install
+    
+    make sure you are in the project root and do nodemon app.js
+    
+    
+ ##  Installing Express.js in our project the way that it will run wherever our project will be deployed 💡💡
  
      npm install --save express
      
      
-## Installing body-parser for Express.js, recommended way of using body-parser
+## Installing body-parser for Express.js, recommended way of using body-parser 💡💡
 
 
      npm install --save body-parser
      
      
-# Useful Resources & Links
+# Useful Resources & Links 💡💡
 
           Official Node.js Docs: https://nodejs.org/en/docs/guides/
 
