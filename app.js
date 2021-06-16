@@ -8,6 +8,7 @@
 
 //const http = require('http'), express will do it automaticaly
 
+const path = require('path');
 
 /**EXPRESS JS
  * After installing express with npm
@@ -52,7 +53,8 @@ app.use(shopRoutes);
 
 //serving error 404 page not found pages
 app.use((req ,res ,next) =>  {
-   res.status(404).send('<h1>Ooops Page not found</h1>');
+   //res.status(404).send('<h1>Ooops Page not found</h1>');
+   res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 
