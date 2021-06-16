@@ -10,6 +10,10 @@
     
     make sure you are in the project root and do "nodemon app.js"
     
+    you are now ready to test our program in localhost, check port in app.js
+    
+    check routes paths in routes folder
+    
     
  ##  Installing Express.js in our project the way that it will run wherever our project will be deployed 💡💡
  
