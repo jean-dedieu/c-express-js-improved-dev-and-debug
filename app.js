@@ -16,10 +16,23 @@
 
 const express = require('express');
 
+//we use body parser as third-party module cause they remove and it to express,they remove and it to express that is it not stable
+const bodyParser = require('body-parser');
+
 //use our express as app object
 const app = express();
 
+//import admin routes here
+const adminRoutes = require('./routes/admin');
 
+//import shop routes here
+const shopRoutes = require('./routes/shop');
+
+
+
+/*using body-parser that we installed and used as third-party module
+*if we don't put extended:false, it will give us an error that body-parser is deprecated*/
+app.use(bodyParser.urlencoded({ extended: false}));
 //CREATING NODE JS SERVER
  
  /**This will create Event loop and keep running as long as there is incoming requests
@@ -31,19 +44,17 @@ const app = express();
   * 
   */
 
-/*
-**working with middleware, functions for processing requests in express
-there are executed top bottom
-*/
+//use our admin routes, this the router object exported with module.exports in routes/admin
+app.use('/admin',adminRoutes);
+
+//use our shop routes, this the router object exported with module.exports in routes/shop
+app.use(shopRoutes);
+
+//serving error 404 page not found pages
 app.use((req ,res ,next) =>  {
-    console.log('In the middleware');
-    next(); //allows the request to continue to the next middleware
+   res.status(404).send('<h1>Ooops Page not found</h1>');
 });
 
-app.use((req ,res ,next) =>  {
-    console.log('In another the middleware');
-    res.send('<h1>Hello from Express</h1>');//here express will set headers and text-type for us
-});
 
  /*Code used before shortening the server creation and listening
  onst server = http.createServer(app);
