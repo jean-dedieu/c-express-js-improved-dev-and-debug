@@ -8,7 +8,7 @@
     
     npm install
     
-    make sure you are in the project root and do nodemon app.js
+    make sure you are in the project root and do "nodemon app.js"
     
     
  ##  Installing Express.js in our project the way that it will run wherever our project will be deployed 💡💡
