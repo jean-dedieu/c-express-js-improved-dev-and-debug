@@ -1,6 +1,6 @@
 # C- ExpressJS Improved Development Workflow And Debugging
 
-    This part of section 4 covers Express.js framework as we were writing manualy our server body in HTML
+    This source code covers Express.js framework as we can write manualy our server body in HTML
 
 
  ##  Installing Express.js in our project the way that it will run wherever our project will be deployed
@@ -23,14 +23,3 @@
           More about the Node.js Event Loop: https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
 
           Blocking and Non-Blocking Code: https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
-
-
-
-
-
-
-
-## End: Section 5 => 66 Using express router 🛫🛫🛫🛫
-
-
-
