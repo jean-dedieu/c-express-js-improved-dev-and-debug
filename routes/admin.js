@@ -4,6 +4,9 @@ const path = require('path');
 
 const express = require('express');
 
+//import path helper
+const rootDir = require('../util/path');
+
 const router = express.Router();
 
 /*
@@ -15,7 +18,7 @@ there are executed from top to bottom
 we precise also that it will handle the POST incoming requests*/
 router.get('/add-product', (req, res, next) => {
     //sending HTML file
-    res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
+    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
   });
 
 //add product router

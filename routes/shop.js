@@ -3,6 +3,8 @@
 const path = require('path');
 
 const express = require('express');
+//import path helper
+const rootDir = require('../util/path');
 
 const router = express.Router();
 
@@ -13,7 +15,7 @@ there are executed from top to bottom
 router.get('/', (req, res, next) => {
    // res.send('<h1>Shop and Home Page!</h1>');
    //sending HTML file
-   res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
+   res.sendFile(path.join(rootDir, 'views', 'shop.html'));
   });
   
 
