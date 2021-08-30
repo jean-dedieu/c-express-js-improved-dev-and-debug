@@ -23,7 +23,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 //set a global configuration value to use  template engine
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 //import admin routes here
@@ -55,10 +55,17 @@ app.use("/admin", adminData.routes);
 //use our shop routes, this the router object exported with module.exports in routes/shop
 app.use(shopRoutes);
 
-//serving error 404 page not found pages
+/*serving error 404 page not found pages
 app.use((req, res, next) => {
   //res.status(404).send('<h1>Ooops Page not found</h1>');
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});*/
+
+app.use((req, res, next) => {
+  res.status(404).render('404', { pageTitle: 'Page Not Found' });
+});
+app.use((req, res, next) => {
+  res.status(201).render('shop', { pageTitle: 'Boutique' });
 });
 
 /*Code used before shortening the server creation and listening

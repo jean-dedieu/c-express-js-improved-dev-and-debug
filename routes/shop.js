@@ -25,7 +25,14 @@ router.get('/', (req, res, next) => {
   //declaring our products so that we can pass the data in our dynamic pages
 const products = adminData.products;
   //render our dynamic page file 
-  res.render('shop', {prods: products, docTitle: 'shop'});
+  res.render('shop', {
+    prods: products,
+    pageTitle: 'shop',
+    path: '/',
+    hasProducts: products.length > 0,
+    activeShop: true,
+    productCSS:true
+  });
   });
   
 
