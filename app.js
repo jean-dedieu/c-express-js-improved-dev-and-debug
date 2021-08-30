@@ -22,8 +22,12 @@ const bodyParser = require("body-parser");
 //use our express as app object
 const app = express();
 
+//set a global configuration value to use  template engine
+app.set('view engine', 'pug');
+app.set('views', 'views');
+
 //import admin routes here
-const adminRoutes = require("./routes/admin");
+const adminData = require("./routes/admin");
 
 //import shop routes here
 const shopRoutes = require("./routes/shop");
@@ -46,7 +50,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //use our admin routes, this the router object exported with module.exports in routes/admin
-app.use("/admin", adminRoutes);
+app.use("/admin", adminData.routes);
 
 //use our shop routes, this the router object exported with module.exports in routes/shop
 app.use(shopRoutes);

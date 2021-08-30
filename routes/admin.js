@@ -1,13 +1,18 @@
 //for shop administration
 //path core module to serve our views pages, else the views pages paths will not work
-const path = require('path');
+const path = require("path");
 
-const express = require('express');
+const express = require("express");
 
 //import path helper
-const rootDir = require('../util/path');
+const rootDir = require("../util/path");
 
 const router = express.Router();
+
+/**Storing products in an array so that we can store them in a file
+ *
+ */
+const products = [];
 
 /*
 **working with middleware, functions for processing requests in express
@@ -16,16 +21,21 @@ there are executed from top to bottom
 
 /*This is the middleware that will know what to do with the request from the form
 we precise also that it will handle the POST incoming requests*/
-router.get('/add-product', (req, res, next) => {
-    //sending HTML file
-    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
-  });
+router.get("/add-product", (req, res, next) => {
+  //sending HTML file
+  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+});
 
 //add product router
-router.post('/add-product', (req, res, next) => {
-    console.log(req.body);
-    res.redirect('/');
-  });
+
+router.post("/add-product", (req, res, next) => {
+  //console.log(req.body);
+  /**Push admin data in products array
+   *
+   */
+  products.push({title: req.body.title});
+  res.redirect("/");
+});
 
 /*homepage router
 router.get('/',(req ,res ,next) =>  {
@@ -35,4 +45,5 @@ router.get('/',(req ,res ,next) =>  {
  
 });*/
 
-module.exports = router;
+exports.routes = router;
+exports.products = products;
