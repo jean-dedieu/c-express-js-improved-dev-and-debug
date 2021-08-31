@@ -19,6 +19,9 @@ const express = require("express");
 //we use body parser as third-party module cause they remove and it to express,they remove and it to express that is it not stable
 const bodyParser = require("body-parser");
 
+//import error.js controller  to get it called
+const errorController = require('./controllers/error');
+
 //use our express as app object
 const app = express();
 
@@ -61,9 +64,9 @@ app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });*/
 
-app.use((req, res, next) => {
-  res.status(404).render('404', { pageTitle: 'Page Not Found' });
-});
+//call get404() function located in error.js controller
+app.use(errorController.get404);
+
 app.use((req, res, next) => {
   res.status(201).render('shop', { pageTitle: 'Boutique' });
 });
