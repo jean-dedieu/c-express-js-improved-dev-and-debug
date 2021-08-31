@@ -27,7 +27,7 @@ const products = adminData.products;
   //render our dynamic page file 
   res.render('shop', {
     prods: products,
-    pageTitle: 'shop',
+    pageTitle: 'Boutique',
     path: '/',
     hasProducts: products.length > 0,
     activeShop: true,

@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%=pageTitle%></title>
-    <link href="/css/main.css" rel="stylesheet" />
+<%- include('includes/head.ejs') %>
     <link rel="stylesheet" href="/css/product.css" />
   </head>
   <body>
-    <header class="main-header">
-      <nav class="main-header__nav">
-        <ul class="main-header__item-list">
-          <li class="main-header__item"><a class="active" href="/">Boutique</a></li>
-          <li class="main-header__item">
-            <a href="/admin/add-product">Ajouter produit</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+   <%- include('includes/navigation.ejs') %>
 
     <main>
          <% if(prods.length > 0){ %>
@@ -36,7 +20,7 @@
                     <p class="product__description">Lorem ipsum !</p>
                 </div>
                 <div class="card__actions">
-                    <button class="btn">Add to Cart</button>
+                    <button class="btn">Ajouter au panier</button>
                 </div>
             </article>
             <% } %>
@@ -45,5 +29,4 @@
         <h1>Nous n'avons pas trouvé des produits à afficher</h1>
         <% }%>
     </main>
-  </body>
-</html>
+  <%- include('includes/end.ejs') %>
