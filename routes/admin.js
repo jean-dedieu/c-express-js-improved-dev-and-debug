@@ -5,26 +5,24 @@ const path = require("path");
 const express = require("express");
 
 //import path helper
-const rootDir = require("../util/path");
+//const rootDir = require("../util/path");
+
+/**Import productsController
+ * Contains the function that will return add-product page with objects
+ */
+const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-/**Storing products in an array so that we can store them in a file
- *
+
+
+//admin/add-product => GET
+/**Route to get add-product page
+ * This route will cal the fuction getAddProduct in products.js controller
+ * To return the add-product page when add-product route is accessed
+ * 
  */
-const products = [];
-
-// /admin/add-product => GET
-router.get('/add-product', (req, res, next) => {
-  res.render('add-product', {
-    pageTitle: 'Ajout produit',
-    path: '/admin/add-product',
-    formsCSS: true,
-    productCSS: true,
-    activeAddProduct: true
-  });
-});
-
+router.get('/add-product', productsController.getAddProduct);
 /*
 **working with middleware, functions for processing requests in express
 there are executed from top to bottom
@@ -37,16 +35,10 @@ router.get("/add-product", (req, res, next) => {
   res.sendFile(path.join(rootDir, "views", "add-product.html"));
 });
 
-//add product router
-
-router.post("/add-product", (req, res, next) => {
-  //console.log(req.body);
-  /**Push admin data in products array
-   *
-   */
-  products.push({title: req.body.title});
-  res.redirect("/");
-});
+/**Post product router
+ * 
+ */
+router.post("/add-product", productsController.postAddProduct);
 
 /*homepage router
 router.get('/',(req ,res ,next) =>  {
@@ -56,5 +48,4 @@ router.get('/',(req ,res ,next) =>  {
  
 });*/
 
-exports.routes = router;
-exports.products = products;
+module.exports = router;

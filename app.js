@@ -27,7 +27,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 //import admin routes here
-const adminData = require("./routes/admin");
+const adminRoutes = require("./routes/admin");
 
 //import shop routes here
 const shopRoutes = require("./routes/shop");
@@ -50,7 +50,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //use our admin routes, this the router object exported with module.exports in routes/admin
-app.use("/admin", adminData.routes);
+app.use("/admin", adminRoutes);
 
 //use our shop routes, this the router object exported with module.exports in routes/shop
 app.use(shopRoutes);
