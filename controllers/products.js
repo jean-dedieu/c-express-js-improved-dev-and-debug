@@ -1,7 +1,5 @@
-/**Storing products in an array so that we can store them in a file
- *
- */
- const products = [];
+
+const Product = require('../models/product');
 
 /**Function for admin/add-product
  * When the route will be accessed by the user
@@ -30,8 +28,8 @@ exports.getAddProduct = (req, res, next) => {
    * 
    */
   exports.postAddProduct = (req, res, next) => {
-    //console.log(req.body); 
-    products.push({title: req.body.title});
+      const product = new Product(req.body.title);
+      product.save();
     res.redirect('/');
   }
 
@@ -43,13 +41,15 @@ exports.getAddProduct = (req, res, next) => {
    * Render our dynamic page file
    */
   exports.getProducts =   (req, res, next) => {  
-  //const products = adminData.products;
-    res.render('shop', {
-      prods: products,
-      pageTitle: 'Boutique',
-      path: '/',
-      hasProducts: products.length > 0,
-      activeShop: true,
-      productCSS:true
-    });
+      Product.fetchAll((products) =>{
+        res.render('shop', {
+          prods: products,
+          pageTitle: 'Boutique',
+          path: '/',
+          hasProducts: products.length > 0,
+          activeShop: true,
+          productCSS:true
+        });
+      });
+   
     };

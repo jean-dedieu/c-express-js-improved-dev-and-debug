@@ -1,8 +1,8 @@
 //for shop administration
 //path core module to serve our views pages, else the views pages paths will not work
-const path = require("path");
+const path = require('path');
 
-const express = require("express");
+const express = require('express');
 
 //import path helper
 //const rootDir = require("../util/path");
@@ -30,9 +30,9 @@ there are executed from top to bottom
 
 /*This is the middleware that will know what to do with the request from the form
 we precise also that it will handle the POST incoming requests*/
-router.get("/add-product", (req, res, next) => {
-  //sending HTML file
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+router.get('/add-product', (req, res, next) => {
+  //sending ejs file
+  res.sendFile(path.join(rootDir, 'views', 'add-product.ejs'));
 });
 
 /**Post product router
