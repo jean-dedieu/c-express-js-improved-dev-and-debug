@@ -10,7 +10,7 @@ We can use npm init after server to add third-party packages
 
 Nodemon is a third-party package
 
-## End: Section 7 Done  🛫🛫🛫🛫
+## End: Section 7 Done, started Enhancing the app  🛫🛫🛫🛫
 
 Icyo gukora kuri présenation ya titre pro:
 

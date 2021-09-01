@@ -14,7 +14,8 @@ const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-
+//import cart controller
+const cart = require('../controllers/cart');
 
 //admin/add-product => GET
 /**Route to get add-product page
@@ -47,5 +48,7 @@ router.get('/',(req ,res ,next) =>  {
     next();
  
 });*/
+
+
 
 module.exports = router;
