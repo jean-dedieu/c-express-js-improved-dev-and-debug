@@ -10,7 +10,7 @@ const Product = require('../models/product');
  * @param {*} next continues the execution
  */
 exports.getAddProduct = (req, res, next) => {
-    res.render('add-product', {
+    res.render('admin/add-product', {
       pageTitle: 'Ajout produit',
       path: '/admin/add-product',
       formsCSS: true,
@@ -30,8 +30,8 @@ exports.getAddProduct = (req, res, next) => {
   exports.postAddProduct = (req, res, next) => {
       const product = new Product(req.body.title);
       product.save();
-    res.redirect('/');
-  }
+      res.redirect('/');
+  };
 
   /**
    * We declare our products so that we can pass the data in our dynamic pages
@@ -42,7 +42,7 @@ exports.getAddProduct = (req, res, next) => {
    */
   exports.getProducts =   (req, res, next) => {  
       Product.fetchAll((products) =>{
-        res.render('shop', {
+        res.render('shop/product-list', {
           prods: products,
           pageTitle: 'Boutique',
           path: '/',
