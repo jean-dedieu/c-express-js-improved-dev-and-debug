@@ -100,6 +100,15 @@ main {
   border-radius: 3px;
   cursor: pointer;
 }
+/*Delete Button*/
+.btn-delete {
+  font: inherit;
+  border: 1px solid white;
+  color:white;
+  background: #f00d19;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 .btn:hover,
 .btn:active {
