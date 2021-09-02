@@ -20,15 +20,16 @@ const router = express.Router();
   * get products page
   * get cart page
   * get checkout page
+  * get orders page
   * 
   */
 router.get('/', shopController.getIndex);
 
 router.get('/products',shopController.getProducts);
 
-
-
 router.get('/cart',shopController.getCart);
+
+router.get('/orders',shopController.getOrders);
 
 router.get('/checkout',shopController.getCheckout);
 

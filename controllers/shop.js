@@ -65,3 +65,15 @@ exports.getCheckout = (req, res, next) => {
   });
 }
 
+/**
+ * GET Orders
+ * @param {*} req receives shop orders page request with orders data
+ * @param {*} res returns shop orders view pages with client data
+ * @param {*} next 
+ */
+exports.getOrders = (req, res, next) => {
+  res.render('shop/orders', {
+    pageTitle: 'Commandes',
+    path: '/orders' 
+  });
+}
