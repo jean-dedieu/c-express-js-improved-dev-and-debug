@@ -7,26 +7,34 @@
 
 //const http = require('http'), express will do it automaticaly
 
-const path = require("path");
+const path = require('path');
 
 /**EXPRESS JS
  * After installing express with npm
  * We will require it here to use it as third-party package
  */
 
-const express = require("express");
+const express = require('express');
 
 //we use body parser as third-party module cause they remove and it to express,they remove and it to express that is it not stable
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
+
+
+//import error.js controller  to get it called
+const errorController = require('./controllers/error');
 
 //use our express as app object
 const app = express();
 
+//set a global configuration value to use  template engine
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 //import admin routes here
-const adminRoutes = require("./routes/admin");
+const adminRoutes = require('./routes/admin');
 
 //import shop routes here
-const shopRoutes = require("./routes/shop");
+const shopRoutes = require('./routes/shop');
 
 /*using body-parser that we installed and used as third-party module
  *if we don't put extended:false, it will give us an error that body-parser is deprecated*/
@@ -46,15 +54,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //use our admin routes, this the router object exported with module.exports in routes/admin
-app.use("/admin", adminRoutes);
+app.use('/admin', adminRoutes);
 
 //use our shop routes, this the router object exported with module.exports in routes/shop
 app.use(shopRoutes);
 
-//serving error 404 page not found pages
+/*serving error 404 page not found pages
 app.use((req, res, next) => {
   //res.status(404).send('<h1>Ooops Page not found</h1>');
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});*/
+
+//call get404() function located in error.js controller
+app.use(errorController.get404);
+
+app.use((req, res, next) => {
+  res.status(201).render('shop', { pageTitle: 'Boutique' });
 });
 
 /*Code used before shortening the server creation and listening

@@ -3,19 +3,34 @@
 const path = require('path');
 
 const express = require('express');
-//import path helper
-const rootDir = require('../util/path');
+
+//importing products controller
+const shopController = require('../controllers/shop');
 
 const router = express.Router();
 
-/*
-**working with middleware, functions for processing requests in express
-there are executed from top to bottom
-*/
-router.get('/', (req, res, next) => {
-   // res.send('<h1>Shop and Home Page!</h1>');
-   //sending HTML file
-   res.sendFile(path.join(rootDir, 'views', 'shop.html'));
-  });
-  
+/**
+ * Gets all products of the shop
+ * When /nothing route is accessed
+ * It will call getProducts function
+ * In controllers/products
+ */
+
+ /**Routers
+  * get products page
+  * get cart page
+  * get checkout page
+  * 
+  */
+router.get('/', shopController.getIndex);
+
+router.get('/products',shopController.getProducts);
+
+
+
+router.get('/cart',shopController.getCart);
+
+router.get('/checkout',shopController.getCheckout);
+
+
 module.exports = router;

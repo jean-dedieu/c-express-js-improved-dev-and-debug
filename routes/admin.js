@@ -5,34 +5,45 @@ const path = require('path');
 const express = require('express');
 
 //import path helper
-const rootDir = require('../util/path');
+//const rootDir = require("../util/path");
+
+/**Import productsController
+ * Contains the function that will return add-product page with objects
+ */
+const adminController = require('../controllers/admin');
 
 const router = express.Router();
 
+
+//admin/add-product => GET
+/**Route to get add-product page
+ * This route will cal the fuction getAddProduct in products.js controller
+ * To return the add-product page when add-product route is accessed
+ * 
+ */
+router.get('/add-product', adminController.getAddProduct);
 /*
 **working with middleware, functions for processing requests in express
 there are executed from top to bottom
 */
 
+/**admin/products=> GET
+ * Will get admin products for admin/product view
+ */
+router.get('/products', adminController.getProducts);
+
 /*This is the middleware that will know what to do with the request from the form
 we precise also that it will handle the POST incoming requests*/
 router.get('/add-product', (req, res, next) => {
-    //sending HTML file
-    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
-  });
+  //sending ejs file
+  res.sendFile(path.join(rootDir, 'views', 'add-product.ejs'));
+});
 
-//add product router
-router.post('/add-product', (req, res, next) => {
-    console.log(req.body);
-    res.redirect('/');
-  });
+/**Post product router
+ * 
+ */
+router.post('/add-product', adminController.postAddProduct);
 
-/*homepage router
-router.get('/',(req ,res ,next) =>  {
-    console.log('In home middleware');
-    res.send('<h1>Home page</h1>');
-    next();
- 
-});*/
+
 
 module.exports = router;
