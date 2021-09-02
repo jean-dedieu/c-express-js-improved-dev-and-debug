@@ -21,11 +21,13 @@ const router = express.Router();
   * get cart page
   * get checkout page
   * get orders page
-  * 
+  * get products by id
   */
 router.get('/', shopController.getIndex);
 
 router.get('/products',shopController.getProducts);
+
+router.get('/products/:productId',shopController.getProduct)
 
 router.get('/cart',shopController.getCart);
 

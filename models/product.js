@@ -37,6 +37,7 @@ module.exports  = class Product {
 
     //save products in products array
     save(){
+        this.id = Math.random().toString;
         getProductsFromFile(products => {
         products.push(this);
         fs.writeFile(p, JSON.stringify(products), err => {
@@ -44,12 +45,28 @@ module.exports  = class Product {
         });
         });
     }
-    /**
-     * retrieve the product data
-     * Call fetchAll() method directly on the class
-     */
-     
+    
+     /**
+      *Fetch products from data/products.json file 
+      * @param {*} cb call back that will be executed
+      *  when done fetching products
+      */
     static fetchAll(cb){
        getProductsFromFile(cb);      
     }
+    
+    /**
+     * 
+     * @param {*} id the product id that will be searched by the js find() method
+     * @param {*} cb  call back that will be executed after find product in products
+     */
+    static findById(id, cb){
+       getProductsFromFile(products => {
+           const product = products.find(p => p.id === id);
+           cb(product);
+
+
+       });
+    }
+
 };
