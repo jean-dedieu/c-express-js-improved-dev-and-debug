@@ -10,9 +10,13 @@ We can use npm init after server to add third-party packages
 
 Nodemon is a third-party package
 
-## End: Section 7 Done, started Enhancing the app  🛫🛫🛫🛫
+## End: Section 7 Done, started Enhancing the app, restart 109 Registering the Routes  🛫🛫🛫🛫
 
 Icyo gukora kuri présenation ya titre pro:
 
 - Gukora maquette yerekana application na figma
 - Kwerekana uko composant zikominikana kuva kur Controller, Model view na database
+- Gukora search engine
+- Gukora recommandation engine
+- Déploiement en ligne
+- Créer l'API et l'acceder sur React Native

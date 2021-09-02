@@ -5,8 +5,8 @@ const path = require('path');
 const express = require('express');
 
 //importing products controller
-const productsController = require('../controllers/products');
-const cartController = require('../controllers/cart');
+const shopController = require('../controllers/shop');
+
 const router = express.Router();
 
 /**
@@ -15,14 +15,22 @@ const router = express.Router();
  * It will call getProducts function
  * In controllers/products
  */
- 
-router.get('/', productsController.getProducts);
 
-//get cart page
-router.get('/cart',cartController.getCart);
+ /**Routers
+  * get products page
+  * get cart page
+  * get checkout page
+  * 
+  */
+router.get('/', shopController.getIndex);
+
+router.get('/products',shopController.getProducts);
 
 
- 
+
+router.get('/cart',shopController.getCart);
+
+router.get('/checkout',shopController.getCheckout);
 
 
 module.exports = router;
