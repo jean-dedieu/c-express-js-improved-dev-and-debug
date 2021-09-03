@@ -22,6 +22,7 @@ const router = express.Router();
   * get checkout page
   * get orders page
   * get products by id
+  * get cart with product for post operation
   */
 router.get('/', shopController.getIndex);
 
@@ -30,6 +31,8 @@ router.get('/products',shopController.getProducts);
 router.get('/products/:productId',shopController.getProduct)
 
 router.get('/cart',shopController.getCart);
+
+router.post('/cart',shopController.postCart);
 
 router.get('/orders',shopController.getOrders);
 

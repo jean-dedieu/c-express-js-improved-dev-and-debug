@@ -65,6 +65,17 @@ exports.getCart = (req, res, next) => {
 
 /**
  * 
+ * @param {*} req sends post request with product id to add to the cart
+ * @param {*} res returns the pages with the product id 
+ * @param {*} next continues execution
+ */
+exports.postCart = (req, res, next) => {
+  const prodId = req.body.productId;
+  console.log(prodId);
+  res.redirect('/cart');
+};
+/**
+ * 
  * @param {*} req receives shop checkout page as request
  * @param {*} res returns shop checkout page as response
  * @param {*} next continues execution
