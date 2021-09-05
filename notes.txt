@@ -11,7 +11,7 @@ We can use npm init after server to add third-party packages
 Nodemon is a third-party package
 
 ## End: Section 8 Done, started section 9 , Adding Cart Model 123 7 ème,
- j'ai intégrer le code, reste à voir  ce que Max dans la suite du vidéos 
+ j'ai intégrer le code, reste à voir  ce que Max fait dans la suite du vidéos 
  si cela correspond exactement au code que j'ai n intégré dans le projet🛫🛫🛫🛫
 
 Icyo gukora kuri présenation ya titre pro:

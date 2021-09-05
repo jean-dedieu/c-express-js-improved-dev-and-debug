@@ -44,6 +44,9 @@ router.get('/add-product', (req, res, next) => {
  */
 router.post('/add-product', adminController.postAddProduct);
 
+//GET edit product page with product Id to be edited
+router.get('/edit-product/:productId', adminController.getEditProduct);
+
 
 
 module.exports = router;

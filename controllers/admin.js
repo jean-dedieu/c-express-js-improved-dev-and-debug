@@ -9,11 +9,12 @@ const Product = require('../models/product');
  * @param {*} next continues the execution
  */
  exports.getAddProduct = (req, res, next) => {
-    res.render('admin/add-product', {
+    res.render('admin/edit-product', {
       pageTitle: 'Ajout produit',
-      path: '/admin/add-product'
+      path: '/admin/add-product',
+      editing: false
     });
-  }
+  };
 
   /**
    * 
@@ -34,6 +35,32 @@ const Product = require('../models/product');
       product.save();
       res.redirect('/');
   };
+  /**
+   * 
+   * @param {*} req receives query with product id to be edited
+   * @param {*} res returns edit-product page with the product form 
+   * @param {*} next continues execution
+   * @returns 
+   */
+  exports.getEditProduct = (req, res, next) => {
+    const editMode = req.query.edit;
+    if (!editMode){
+      return res.redirect('/');
+    }
+    const prodId = req.params.productId;
+    Product.findById(prodId, product => {
+      if (!product){
+        return res.redirect('/');
+
+      }
+      res.render('admin/edit-product', {
+        pageTitle: 'Modifier produit',
+        path: '/admin/edit-product',
+        editing: editMode,
+        product: product
+    });
+   });
+  };
 /**
  * 
  * @param {*} req receives admin/products view page request
@@ -49,4 +76,4 @@ const Product = require('../models/product');
           path: '/products'
         });
       });
-  }
+  };
