@@ -36,17 +36,18 @@ router.get('/products', adminController.getProducts);
 we precise also that it will handle the POST incoming requests*/
 router.get('/add-product', (req, res, next) => {
   //sending ejs file
-  res.sendFile(path.join(rootDir, 'views', 'add-product.ejs'));
+  res.sendFile(path.join(rootDir, 'views/admin', 'edit-product.ejs'));
 });
 
 /**Post product router
  * 
  */
-router.post('/add-product', adminController.postAddProduct);
+ router.post('/add-product', adminController.postAddProduct);
 
-//GET edit product page with product Id to be edited
-router.get('/edit-product/:productId', adminController.getEditProduct);
+ router.get('/edit-product/:productId', adminController.getEditProduct);
+ 
+ router.post('/edit-product', adminController.postEditProduct);
+ 
+ router.post('/delete-product', adminController.postDeleteProduct);
 
-
-
-module.exports = router;
+ module.exports = router;
