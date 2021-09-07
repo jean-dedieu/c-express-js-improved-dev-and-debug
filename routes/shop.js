@@ -22,7 +22,8 @@ const router = express.Router();
   * get checkout page
   * get orders page
   * get products by id
-  * get cart with product for post operation
+  * post cart with product for post operation
+  * post cart delete item , to delete items in the cart
   */
 router.get('/', shopController.getIndex);
 
@@ -33,6 +34,8 @@ router.get('/products/:productId',shopController.getProduct)
 router.get('/cart',shopController.getCart);
 
 router.post('/cart',shopController.postCart);
+
+router.post('/cart-delete-item',shopController.postCartDeleteProduct);
 
 router.get('/orders',shopController.getOrders);
 

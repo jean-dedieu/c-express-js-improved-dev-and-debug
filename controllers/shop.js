@@ -97,6 +97,20 @@ const Cart = require('../models/cart');
   //console.log(prodId);
   res.redirect('/cart');
 };
+
+/**
+ * 
+ * @param {*} req receives a delete product request
+ * @param {*} res delete the itme from the cart and return the result
+ * @param {*} next continues execution
+ */
+ exports.postCartDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.findById(prodId, product => {
+    Cart.deleteProduct(prodId, product.price);
+    res.redirect('/cart');
+  });
+};
 /**
  * 
  * @param {*} req receives shop checkout page as request
