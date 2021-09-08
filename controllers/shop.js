@@ -24,6 +24,12 @@ const Cart = require('../models/cart');
       });  
     };
   
+    /**
+     * 
+     * @param {*} req receives a get request to show the product details when clicked
+     * @param {*} res returns a product details page with full information on the product
+     * @param {*} next continues  execution
+     */
     exports.getProduct = (req, res, next) =>{
       const prodId = req.params.productId;
       Product.findById(prodId, product => {
@@ -32,8 +38,7 @@ const Cart = require('../models/cart');
           pageTitle: product.title,
           path: '/products/:productId'
         });
-      });
-   
+      }); 
     }
 
 /**
@@ -76,7 +81,7 @@ const Cart = require('../models/cart');
       }
       res.render('shop/cart', {
         path: '/cart',
-        pageTitle: 'Your Cart',
+        pageTitle: 'Votre Panier',
         products: cartProducts
       });
     });
@@ -96,7 +101,7 @@ const Cart = require('../models/cart');
   });
   //console.log(prodId);
   res.redirect('/cart');
-};
+}; 
 
 /**
  * 
@@ -127,7 +132,7 @@ const Cart = require('../models/cart');
 /**
  * GET Orders
  * @param {*} req receives shop orders page request with orders data
- * @param {*} res returns shop orders view pages with client data
+ * @param {*} res returns shop orders view pages with client dataf
  * @param {*} next 
  */
 exports.getOrders = (req, res, next) => {
