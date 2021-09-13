@@ -23,6 +23,9 @@ const bodyParser = require('body-parser');
 //import error.js controller  to get it called
 const errorController = require('./controllers/error');
 
+//use database
+const sequelize = require('./util/database');
+
 //use our express as app object
 const app = express();
 
@@ -35,6 +38,7 @@ const adminRoutes = require('./routes/admin');
 
 //import shop routes here
 const shopRoutes = require('./routes/shop');
+
 
 /*using body-parser that we installed and used as third-party module
  *if we don't put extended:false, it will give us an error that body-parser is deprecated*/
@@ -72,9 +76,14 @@ app.use((req, res, next) => {
   res.status(201).render('shop', { pageTitle: 'Boutique' });
 });
 
+sequelize.sync().then(result => {
+  //console.log(result);
+  app.listen(3000);
+}).catch(err => {
+  console.log(err);
+});
 /*Code used before shortening the server creation and listening
  onst server = http.createServer(app);
 
 server.listen(3000);*/
 
-app.listen(3000);

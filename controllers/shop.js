@@ -12,16 +12,16 @@ const Cart = require('../models/cart');
    * Render our dynamic page file
    */
    exports.getProducts = (req, res, next) => {  
-      Product.fetchAll((products) =>{
-        res.render('shop/product-list', {
-          prods: products,
-          pageTitle: 'Tous nos produits',
-          path: '/products',
-          hasProducts: products.length > 0,
-          activeShop: true,
-          productCSS:true
-        });
-      });  
+    Product.findAll().then(products => {
+      res.render('shop/product-list', {
+        prods: products,
+        pageTitle: 'Tous les joueurs',
+        path: '/products'
+      });
+  
+    }).catch(err => {
+      console.log(err);
+    });        
     };
   
     /**
@@ -30,16 +30,31 @@ const Cart = require('../models/cart');
      * @param {*} res returns a product details page with full information on the product
      * @param {*} next continues  execution
      */
-    exports.getProduct = (req, res, next) =>{
+     exports.getProduct = (req, res, next) => {
       const prodId = req.params.productId;
-      Product.findById(prodId, product => {
+      /*Product.findAll({ where: {id: prodId }})
+      .then(products => {
         res.render('shop/product-detail', {
-          product:product,
-          pageTitle: product.title,
-          path: '/products/:productId'
+          product: products[0],
+          pageTitle: products[0].title,
+          path: '/products'
         });
-      }); 
-    }
+
+      })
+      .catch(err => 
+        console.log(err));*/
+    
+      Product.findByPk(prodId)
+      .then(product => {
+          res.render('shop/product-detail', {
+            product: product,
+            pageTitle: product.title,
+            path: '/products'
+          })
+          .catch(err => 
+        console.log(err));;
+    })
+  };
 
 /**
  * 
@@ -48,14 +63,17 @@ const Cart = require('../models/cart');
  * @param {*} next continues execution
  */
  exports.getIndex = (req, res, next) =>{
-  Product.fetchAll((products) =>{
+  Product.findAll().then(products => {
     res.render('shop/index', {
       prods: products,
       pageTitle: 'Boutique',
       path: '/'
     });
-  });
-}
+
+  }).catch(err => {
+    console.log(err);
+  });  
+};
 
 /**
  * 
@@ -96,7 +114,7 @@ const Cart = require('../models/cart');
  */
  exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findById(prodId, (product) => {
+  Product.findByPk(prodId, (product) => {
     Cart.addProduct(prodId, product.price);
   });
   //console.log(prodId);
@@ -111,7 +129,7 @@ const Cart = require('../models/cart');
  */
  exports.postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findById(prodId, product => {
+  Product.findByPk(prodId, product => {
     Cart.deleteProduct(prodId, product.price);
     res.redirect('/cart');
   });

@@ -31,10 +31,20 @@ const Product = require('../models/product');
       const imageUrl = req.body.imageUrl;
       const price = req.body.price;
       const description =req.body.description;
-
-      const product = new Product(null, title, imageUrl, price, description);
-      product.save();
-      res.redirect('/');
+      //create and save model in database
+      Product.create({
+          title: title,
+          price: price,
+          imageUrl: imageUrl,
+          description: description
+      })
+      .then(result => {
+        //console.log(result);
+        console.log('Succes, created product');
+      })
+      .catch(err => {
+        console.log(err);
+      });   
   };
   /**
    * 
@@ -49,7 +59,7 @@ const Product = require('../models/product');
       return res.redirect('/');
     }
     const prodId = req.params.productId;
-    Product.findById(prodId, product => {
+    Product.findByPk(prodId, product => {
       if (!product){
         return res.redirect('/');
 

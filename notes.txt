@@ -25,8 +25,8 @@ Icyo gukora kuri présenation ya titre pro:
 
 
 
-<form action="/cart" method="post">
-                <button class="btn" type="submit">Add to cart</button>
-                <input type="hidden" name="productId" value="<%= product.id %>">
+Sequelize: simplify sql queries, cause the more our application grow,
+ the more it will be logic,that can be hard to manage with sql queries
 
-            </form>
+
+ Next: Continue Sequelize => Start 158th lecture
