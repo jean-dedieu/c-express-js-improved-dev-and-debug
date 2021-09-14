@@ -43,11 +43,12 @@ const Product = require('../models/product');
       .then(result => {
         //console.log(result);
         console.log('Succes, created product');
-        res.redirect('/admin/products')
+        
       })
       .catch(err => {
         console.log(err);
       });   
+      res.redirect('/admin/products')
     };
   /**
    * 
