@@ -25,6 +25,9 @@ const errorController = require('./controllers/error');
 
 //use database
 const sequelize = require('./util/database');
+//import User and Product models that we can relate them
+const Product = require('./models/product');
+const User = require('./models/user');
 
 //use our express as app object
 const app = express();
@@ -56,6 +59,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //use express static object to serve html pages statically
 app.use(express.static(path.join(__dirname, 'public')));
+//reach out the data base and retrieve a user
+app.use((req, res, next) => {
+   User.findByPk(1).then(user => {
+     req.user = user;
+     next();
+   })
+   .catch(err => console.log(err));
+});
 
 //use our admin routes, this the router object exported with module.exports in routes/admin
 app.use('/admin', adminRoutes);
@@ -76,10 +87,26 @@ app.use((req, res, next) => {
   res.status(201).render('shop', { pageTitle: 'Boutique' });
 });
 
-sequelize.sync().then(result => {
+Product.belongsTo(User,{constraints: true, onDelete: 'CASCADE'});
+User.hasMany(Product);
+sequelize
+.sync()
+.then(result => {
+  return User.findByPk(1);
   //console.log(result);
   app.listen(3000);
-}).catch(err => {
+})
+.then(user => {
+  if(!user){
+    User.create({name:'Jean',email:'jeandedieu.emploi@gmail.com'});
+  }
+  return user;
+})
+.then(user => {
+  console.log(user);
+  app.listen(3000);
+})
+.catch(err => {
   console.log(err);
 });
 /*Code used before shortening the server creation and listening

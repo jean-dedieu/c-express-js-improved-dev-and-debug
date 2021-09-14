@@ -22,6 +22,7 @@ Icyo gukora kuri présenation ya titre pro:
 - Gukora recommandation engine
 - Déploiement en ligne
 - Créer l'API et l'acceder sur React Native
+- Kwerekana schéma ya association muri application: lecture 162 (1:30)
 
 
 
