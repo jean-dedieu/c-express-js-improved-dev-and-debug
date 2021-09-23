@@ -1,8 +1,5 @@
 
 const Product = require('../models/product');
-//const cart = require('../models/cart');
-const Cart = require('../models/cart');
-
 
   /**
    * We declare our products so that we can pass the data in our dynamic pages
@@ -174,19 +171,42 @@ const Cart = require('../models/cart');
   })
   .catch(err => console.log(err));
 };
+
+
 /**
- * 
- * @param {*} req receives shop checkout page as request
- * @param {*} res returns shop checkout page as response
+ * returns the ordered products from the user cart
+ * @param {*} req receives a post request to post the products in order
+ * @param {*} res returns the products ordered
  * @param {*} next continues execution
  */
- exports.getCheckout = (req, res, next) => {
-  res.render('shop/checkout', {
-    pageTitle: 'Recaptulatif',
-    path: '/checkout'
-  });
-}
-
+exports.postOrder = (req, res, next) => {
+  let fetchedCart;
+  req.user.getCart()
+  .then(cart => {
+    fetchedCart = cart;
+    return cart.getProducts();
+  })
+  .then(products => {
+    return req.user.createOrder()
+    .then(order => {
+      return order.addProducts(products.map(product => {
+        product.orderItem = { quantity: product.cartItem.quantity};
+        return product;
+      })
+      );
+    })
+    .catch(err => console.log(err));
+ 
+  })
+  .then(result => {
+    return fetchedCart.setProducts(null);
+    
+  })
+  .then(result => {
+    res.redirect('/orders');
+  })
+  .catch(err => console.log(err));
+};
 /**
  * GET Orders
  * @param {*} req receives shop orders page request with orders data
@@ -194,8 +214,16 @@ const Cart = require('../models/cart');
  * @param {*} next 
  */
 exports.getOrders = (req, res, next) => {
-  res.render('shop/orders', {
-    pageTitle: 'Commandes',
-    path: '/orders' 
-  });
+  req.user
+  .getOrders({include: ['products']})
+  .then(orders => {
+    res.render('shop/orders', {
+      pageTitle: 'Commandes',
+      path: '/orders',
+      orders: orders
+    });
+  })
+  .catch(err => console.log(err));
+  
 };
+
