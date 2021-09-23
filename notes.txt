@@ -22,11 +22,12 @@ Icyo gukora kuri présenation ya titre pro:
 - Gukora recommandation engine
 - Déploiement en ligne
 - Créer l'API et l'acceder sur React Native
+- Kwerekana schéma ya association muri application: lecture 162 (1:30)
 
 
 
-<form action="/cart" method="post">
-                <button class="btn" type="submit">Add to cart</button>
-                <input type="hidden" name="productId" value="<%= product.id %>">
+Sequelize: simplify sql queries, cause the more our application grow,
+ the more it will be logic,that can be hard to manage with sql queries
 
-            </form>
+
+ Next: Continue Sequelize => Start 171th lecture, Adding an Order model
