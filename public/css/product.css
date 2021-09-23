@@ -12,13 +12,11 @@
 }
 
 .product__title {
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     text-align: center;
-    overflow: hidden;
 }
 
 .product__price {
-    font-size: 0.7rem;
     text-align: center;
     color: #4d4d4d;
     margin-bottom: 0.5rem;
@@ -26,5 +24,4 @@
 
 .product__description {
     text-align: center;
-    font-size: 0.9rem;
 }
