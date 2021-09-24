@@ -1,9 +1,4 @@
-
-# Private code after finishing Express development
-
-# C- ExpressJS Improved Development Workflow And Debugging
-
-    This source code covers Express.js framework as we can write manualy our server body in HTML
+# E-Commerce platform developped in Node.js/NoSQL
 
  ## Clone and run this project 🚀🚀
  
@@ -40,3 +35,9 @@
           Blocking and Non-Blocking Code: https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
 
           https://developer.mozilla.org/en-US/docs/Glossary/MVC
+          
+          
+          
+          
+          
+          
