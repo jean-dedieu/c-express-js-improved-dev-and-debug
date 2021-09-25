@@ -1,5 +1,10 @@
 # E-Commerce platform developped in Node.js/NoSQL
 
+Deployed app: 
+
+https://jeandedieu-shop-node-js.herokuapp.com/
+
+
  ## Clone and run this project 🚀🚀
  
     git clone + remote source
